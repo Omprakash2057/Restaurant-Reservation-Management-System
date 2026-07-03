@@ -9,10 +9,13 @@ const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 const app = express();
 
-// Middleware
+const clientOrigin = process.env.CLIENT_ORIGIN
+  ? process.env.CLIENT_ORIGIN.replace(/\/$/, '')
+  : '*';
+
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || '*',
+    origin: clientOrigin,
   })
 );
 app.use(express.json());
