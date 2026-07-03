@@ -17,6 +17,11 @@ app.use(
 );
 app.use(express.json());
 
+// Root route
+app.get('/', (req, res) => {
+  res.status(200).json({ success: true, message: 'Restaurant Reservation API is active. Use /api/health for details.' });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.status(200).json({ success: true, message: 'API is running' });
